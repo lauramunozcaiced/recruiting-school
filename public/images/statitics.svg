@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="22" height="22" viewBox="0 0 22 22">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_7" data-name="Rectangle 7" width="22" height="22" transform="translate(0 -0.276)" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="Group_8" data-name="Group 8" transform="translate(0 1.065)">
+    <path id="Path_14" data-name="Path 14" d="M0,0V20.955H20.955v-1.3H1.3V0Z" transform="translate(0 -0.021)" fill="#fff"/>
+    <g id="Group_7" data-name="Group 7" transform="translate(0 -0.789)">
+      <g id="Group_6" data-name="Group 6" clip-path="url(#clip-path)">
+        <path id="Path_15" data-name="Path 15" d="M38.2,25.334l-.947-.928C37.979,23.7,38.7,23,39.41,22.289c1.012-1,2.026-2.008,3.021-3.029a.686.686,0,0,1,.773-.2c1.433.379,2.879.712,4.313,1.087.278.073.416.032.557-.217.365-.646.759-1.276,1.163-1.949l-1.659-1.018,4.49-2.494v5.184l-1.716-1c-.284.471-.56.929-.836,1.388s-.564.925-.832,1.4a.39.39,0,0,1-.526.208c-1.493-.393-3-.752-4.49-1.141a.793.793,0,0,0-.886.24c-1.5,1.543-3.039,3.057-4.579,4.6" transform="translate(-33.786 -12.349)" fill="#fff"/>
+        <path id="Path_16" data-name="Path 16" d="M171.556,90.074h-2.6v-.52c0-2.592-.011-5.184.013-7.776a2.425,2.425,0,0,1,.29-1.034c.287-.561.643-1.086.965-1.618a1.158,1.158,0,0,1,.118.024c1.049.362,1.281,1.092,1.245,2.171-.091,2.729-.03,5.463-.03,8.194Z" transform="translate(-153.217 -70.988)" fill="#fff"/>
+        <path id="Path_17" data-name="Path 17" d="M87.222,103.73H84.714c-.011-.155-.03-.3-.03-.448,0-2.293-.008-4.586.01-6.879a1.063,1.063,0,0,1,.254-.644c.434-.483.935-.906,1.364-1.394.252-.287.512-.19.748-.088.107.046.178.292.178.448q.016,4.3.007,8.6c0,.122-.013.243-.023.407" transform="translate(-76.795 -84.636)" fill="#fff"/>
+        <path id="Path_18" data-name="Path 18" d="M127.057,108.4V99.338c.806.2,1.584.384,2.349.609.1.03.191.285.192.436.012,2.25.008,4.5.008,6.749V108.4Z" transform="translate(-115.224 -89.318)" fill="#fff"/>
+        <path id="Path_19" data-name="Path 19" d="M45.138,128.1v6.38H42.6v-4.568l.46.364,2.074-2.175" transform="translate(-38.636 -115.403)" fill="#fff"/>
+      </g>
+    </g>
+  </g>
+</svg>

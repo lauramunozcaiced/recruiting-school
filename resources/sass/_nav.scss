@@ -1,0 +1,278 @@
+nav {
+    transition: all .5s;
+    button{
+        border: none;
+        position: absolute;
+        background-color: #e6792d;
+        width: 16px;
+        height: 100vh;
+        right: 0;
+        top: 0;
+        padding: 0;
+        cursor: pointer;
+        z-index: 2;
+        img{
+            width: 10px;
+        }
+    }
+    padding: 0;
+    background:$primary;
+
+    .dropdown-menu.logout{
+        right: 0;
+        left: auto;
+        float: right;
+        top: 112%;
+    } 
+    .darkmode__change{
+        padding: 0 2rem 0 0;
+        span{
+            font-size: 22px;
+            color: $white;
+        }
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 42px;
+            height: 22px;
+          }
+          
+          .switch input { 
+            opacity: 0;
+            width: 0;
+            height: 0;
+          }
+          
+          .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            -webkit-transition: .4s;
+            transition: .4s;
+          }
+          
+          .slider:before {
+            position: absolute;
+            content: "";
+            height: 14px;
+            width: 14px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            -webkit-transition: .4s;
+            transition: .4s;
+          }
+          
+          input:checked + .slider {
+            background-color: $secondary-dark;
+          }
+          
+          input:focus + .slider {
+            box-shadow: 0 0 1px $secondary-dark;
+          }
+          
+          input:checked + .slider:before {
+            -webkit-transform: translateX(19px);
+            -ms-transform: translateX(19px);
+            transform: translateX(19px);
+          }
+          
+          /* Rounded sliders */
+          .slider.round {
+            border-radius: 34px;
+          }
+          
+          .slider.round:before {
+            border-radius: 50%;
+          }
+    }
+    .text-name{
+        font-weight: 400;
+        line-height: 1rem;
+    }
+    .text-role{
+        font-weight: 100;
+        font-size: 11px;
+    }
+    .image__profile{
+        background-position: center;
+        background-size: contain;
+        width: 43px;
+        height: 43px;
+        margin-right: 12px;
+        border-radius: 80px;
+        background-repeat: no-repeat;
+        box-shadow: 0px 0px 5px $primary;
+        position: relative;
+        &:before{
+            content: '';
+            position: absolute;
+            width: 11px;
+            height: 11px;
+            background-color: $green;
+            bottom: 0;
+            right: 0;
+            border-radius: 50%;
+        }
+       label{
+        font-size: 14px!important;
+        color: $black;
+        font-weight: 500;
+       }
+    }
+    &.navbar{
+        padding: 0;
+        position: sticky;
+        height: 100vh;
+        width: 220px;
+        display: block;
+        .logo-container{
+            padding: .5rem;
+            background-color: #e77c32;
+            .logotiny{
+                display: none;
+            }
+        }
+        .user-container{
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #e77c32;
+        }
+        
+        .menu-container,.logout-container{
+            padding: 1rem;
+            a{
+                display: block;
+                padding: .7rem 0;
+                text-decoration: none;
+            &:hover{
+                background: linear-gradient(90deg, #e57425 0%, #f18438 100%);
+            }
+            &.route-selected{
+                background: linear-gradient(90deg, #e57425 0%, #f18438 100%);
+            }
+                
+                img{
+                    margin-right: 12px;
+                }
+                label{
+                    color:$white;
+                    font-weight: 300;
+                }
+            }
+        }
+        .menu-container{
+            padding-top: 0;
+        }
+        .logout-container{
+            background-color: #FFFFFF0F;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+        .dropdown-menu {
+            border-radius: 0;
+            border: none;
+    
+            .dropdown-item {
+                border-radius: 0;
+                padding: 0.8rem 0.75rem;
+    
+                &:hover {
+                    background-color: $white;
+                    color: $primary;
+                }
+    
+                i {
+                    width: 40px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+            }
+    
+            &.logout {
+                min-width: 100px;
+                top: 130%;
+                right: 0;
+            }
+        }
+        
+        .main-user {
+            ul{
+                padding: 0;
+                li{
+                        justify-content: center;
+                }
+            }
+           
+            
+        }
+        &.little-navbar{
+            
+            transition: all .5s;
+            width: 70px;
+            .logo-container{
+
+                .logo{
+                    display: none;
+                }
+                .logotiny{
+                    display: block;
+                }
+            }
+            .user-container{
+                display: none;
+            }
+            .menu-container,.logout-container{
+                padding: 1.3rem;
+                a{
+                    position: relative;
+                    
+                    img{
+                        margin-right: 0;
+                        width: 16px;
+                    }
+                    label{
+                        position: absolute;
+                        left: 27px;
+                        bottom: 5px;
+                        z-index: 0;
+                        opacity: 0;
+                        padding: .3rem .6rem;
+                        transition: opacity .2s;
+                        border-radius: 3px;
+                     }
+                    &:hover{
+                        label{
+                            background-color:#E57425;
+                            opacity: 1;
+                            z-index: 2;
+                           
+                        }
+                    }
+                }
+                
+            }
+        }
+    }
+    
+    .navbar {    
+        &-brand {
+            margin-right: 0;
+            @media (max-width: 553px){
+                margin: 0 auto;
+            }
+            h6 {
+                margin: 0 0 0 2.5rem;
+                color: $primary;
+                font-weight: 600;
+            }
+        }
+    }
+}
