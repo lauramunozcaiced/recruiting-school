@@ -20,8 +20,8 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <!--Livewire-->
-    @livewireStyles
-    @livewireScripts
+    @livewireStyles()
+    @livewireScripts()
 </head>
 <body @auth class="{{Auth::user()->role}}" @endauth>
     <div id="app" class="app">
