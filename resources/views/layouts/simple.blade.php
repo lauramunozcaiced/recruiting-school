@@ -21,8 +21,8 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     
     <!--Livewire-->
-    @livewireStyles
-    @livewireScripts
+    @livewireStyles()
+    @livewireScripts()
 </head>
 <body>
     @yield('content')
