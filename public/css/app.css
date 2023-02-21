@@ -12358,6 +12358,7 @@ body button,
 body span,
 body .btn {
   font-size: 12.5px;
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
 }
 
 body button:focus {
@@ -12480,6 +12481,7 @@ body .form select.form-control {
   margin: 0.3rem 0.3rem 0.3rem 0rem;
   font-size: 12.5px;
   border-radius: 0;
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
 }
 
 body form input[type=file].form-control,
@@ -12500,6 +12502,7 @@ body .form textarea.form-control {
   font-size: 12.5px;
   min-height: 150px;
   border-radius: 0;
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
 }
 
 body form .form-group > label,
