@@ -23,7 +23,7 @@ jQuery(document).ready(function(){
         
         if(jQuery(this).find('iframe').length){
             var iframe = jQuery(this).find('iframe');
-            var link = iframe.attr("src");
+            var link = iframe.attr("src").replace('?rel=0&amp;autoplay=1', '');
             iframe.attr("src",link)
         }
     })
@@ -38,20 +38,25 @@ jQuery(document).ready(function(){
         jQuery(name).removeClass('show');
             var iframe = jQuery(this).data('iframe');
             var link = jQuery(iframe).attr('src');          
-            jQuery(iframe).attr('src',link.replace('&autoplay=1', ''));
+            jQuery(iframe).attr('src',link.replace('?rel=0&amp;autoplay=1', ''));
             jQuery('#poster'+iframe.replace('#', '')).show('slow');
     })
 
     jQuery(document).on('click','.posterVideo',function(){
         jQuery(this).hide('slow');
         var iframe= jQuery(this).data('iframe')
-        jQuery(iframe).attr('src',jQuery(iframe).attr('src')+"&autoplay=1");
+        jQuery(iframe).attr('src',jQuery(iframe).attr('src')+"?rel=0&amp;autoplay=1");
+    })
+
+    jQuery(document).on('click','.btnModalVideo',function(){
+         var iframe= jQuery(this).data('target')
+        jQuery(iframe).find('iframe').attr('src',jQuery(iframe).find('iframe').attr('src')+"?rel=0&amp;autoplay=1");
     })
 
     jQuery(document).on('click','.close',function(){
         if(jQuery(this).data('iframe')){
             var iframe = jQuery(this).data('iframe');
-            var link = jQuery(iframe).attr('src'); 
+            var link = jQuery(iframe).attr('src').replace('?rel=0&amp;autoplay=1', ''); 
             jQuery(iframe).attr('src', link);
         }
     })

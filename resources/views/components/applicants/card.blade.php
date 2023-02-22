@@ -41,7 +41,7 @@
             @endif
             <!--Video Button -->
             @if ($applicant->video)
-                <a type="button" class="btn btn-warning modalButt rounded-circle text-white" data-toggle="modal"
+                <a type="button" class="btn btn-warning modalButt rounded-circle text-white btnModalVideo" data-toggle="modal"
                     data-target="#videoModal{{ $applicant->id }}"
                     title="Watch {{ $applicant->firstname }} Video Presentation">
                     <i class="fa fa-play"></i>
@@ -56,13 +56,12 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                @if (str_contains($applicant->video, 'https://vimeo.com/'))
-                                    @php
-                                        $videoCode = str_replace('https://vimeo.com/', '', $applicant->video);
-                                        $codes = explode("/",$videoCode);
-                                    @endphp
+                                @php
+                                    $data = buildUrlVideo($applicant->video);
+                                @endphp
+                                @if ($data[1])
                                     <iframe id="iframevideoModal{{ $applicant->id }}" width="560" height="315"
-                                        src="https://player.vimeo.com/video/{{ $codes[0] }}?h={{$codes[1]}}"
+                                        src="{{ $data[0] }}"
                                         frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen >
                                     </iframe>
                                 @else

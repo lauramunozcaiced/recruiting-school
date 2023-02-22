@@ -118,19 +118,18 @@
             </div>
         </div>
         <div class="col-lg-6 col-sm-12 border-left p-4 h-100 bg-gray d-flex flex-column justify-content-center">
-
+            <div>
             <!--Video Applicant -->
-            @if (str_contains($applicant->video, 'https://vimeo.com/'))
-                @php
-                    $videoCode = str_replace('https://vimeo.com/', '', $applicant->video);
-                    $codes = explode("/",$videoCode);
-                @endphp
+            @php
+             $data = buildUrlVideo($applicant->video);
+            @endphp
+            @if ($data[1])
                 <div class="d-flex justify-content-center position-relative">
                     <div id="posteriframe{{ $applicant->id }}" class="position-absolute posterVideo"
                         data-iframe="#iframe{{ $applicant->id }}"
                         style=" background-image: url({{ asset('images/poster.jpg') }}); "></div>
                     <iframe id="iframe{{ $applicant->id }}" width="560" height="315"
-                        src="https://player.vimeo.com/video/{{ $codes[0] }}?h={{$codes[1]}}"
+                        src="{{$data[0]}}"
                         frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen ></iframe>
 
                 </div>
@@ -138,7 +137,7 @@
                 <p>The link used by {{ $applicant->firstname }} for the video, is not from youtube or it was not
                     possible to add it.<br> <a href="{{ $applicant->video }}" target="_blank">Go to the link</a> </p>
             @endif
-
+        </div>
             <!--Flags Applicant -->
             <x-applicants.advices :applicant="$applicant"/>
 
