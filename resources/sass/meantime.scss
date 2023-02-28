@@ -2,24 +2,17 @@
 @import 'dashboard';
 @import 'nav';
 
-body{
-    font-family: $font-family;
-    font-size: .875rem;
-    font-weight: 400;
-}
-
 body {
     line-height: 1.1;
     .app{
         display: flex;
-        justify-content: space-between;
         width: 100vw;
         main{
             height: 100vh;
-            width: calc(100vw - 300px);
+            width: calc(100vw - 220px);
             transition: all .5s;
             &.max-content{
-                width: calc(100vw - 150px);
+                width: calc(100vw - 70px);
             }
         }
     }
@@ -57,6 +50,16 @@ body {
     small {
         color: $text;
         margin-bottom: 0;
+        line-height: 1.29;
+        letter-spacing: 0.1px;
+        font-family: $font-family-sans-serif, Arial, Helvetica, sans-serif;
+    }
+    small{
+        line-height: 1;
+    }
+
+    i {
+        font-family: 'Font Awesome';
     }
     .bg-orange{
         background-color: $primary;
@@ -83,7 +86,7 @@ body {
     span,
     .btn {
         font-size: .875rem;
-        font-family: $font-family, Arial, Helvetica, sans-serif;
+        font-family: $font-family-sans-serif, Arial, Helvetica, sans-serif;
         
     }
 
@@ -92,6 +95,14 @@ body {
     }
     .close {
         font-size: 18px;
+    }
+
+    h5 {
+        font-size: 14.5px;
+    }
+
+    h4 {
+        font-size: 19px;
     }
 
     
@@ -184,7 +195,7 @@ body {
             margin: .3rem .3rem .3rem 0rem;
             font-size: .875rem;
             border-radius: 0;
-            font-family: $font-family, Arial, Helvetica, sans-serif;
+            font-family: $font-family-sans-serif, Arial, Helvetica, sans-serif;
         }
         input[type="file"].form-control{
             height: 2.4rem;
@@ -199,7 +210,7 @@ body {
             font-size: 12.5px;
             min-height: 150px;
             border-radius: 0;
-            font-family: $font-family, Arial, Helvetica, sans-serif;
+            font-family: $font-family-sans-serif, Arial, Helvetica, sans-serif;
         }
 
         .form-group {
@@ -631,6 +642,14 @@ ul {
     list-style: none;
 }
 
+.messages-container{
+    p{
+        text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 5px;
+    }
+}
+
 .card-applicant{
     .card-column{
         padding: .5rem;
@@ -646,101 +665,4 @@ ul {
         border-top: none;
         padding: .75rem .5rem;
     }
-}
-.messagesFolder{
-    display: flex;
-    flex-direction: column;
-    
-    a{
-        padding: .6rem 1rem .6rem 1rem;
-        cursor: pointer;
-        text-decoration: none;
-        display: flex;
-        align-items: center;
-        border-radius: 6px;
-        margin-bottom: .5rem;
-        color: $text;
-        &:hover{
-            background-color: $light-gray;
-        }
-        &.messageSelected{
-            background-color: $light-gray;
-            font-weight: 500;
-        }
-    }
-}
-
-#dynamic-messages{
-    height: 80vh;
-    overflow: auto;
-}
-.messagesPreview{
-    border-radius: 8px;
-    
-}
-
-.image__profile{
-    .userImage{
-        width: 30px;
-      background-size: cover;
-        border-radius: 50%;
-        height: 30px;
-    }  
-}
-
-.ql-editor{
-    height: 140px!important;
-}
-.select2{
-    width: 100%important;
-}
-.select2-selection{
-    border: none!important;
-    height: auto!important;
-    padding: 0.3rem 0.5rem;
-    margin: .3rem .3rem .3rem 0rem;
-    border-radius: 0;
-    background-color: #eff1f3;
-    width: 100%!important;
-}
-
-.select2-selection__rendered{
-    font-size: .875rem;
-    height: auto!important;
-    font-family: $font-family, Arial, Helvetica, sans-serif;
-}
-
-.select2-selection__arrow {
-    position: absolute;
-    top: 50%!important;
-    right: 16px!important;
-    height: auto!important;
-    width: auto!important;
-}
-
-.bodyMessage{
-    border:1px solid $shadow;
-    box-shadow: 1px 1px 6px $shadow;
-}
-a{
-    text-decoration: none!important;
-}
-.messagesPreview{
-    padding: 1rem;
-    cursor: pointer;
-    text-decoration: none;
-    outline: none;
-    background-color: $white;
-    box-shadow: 1px 1px 6px $shadow;
-    margin: .5rem;
-    transition: all .2s;
-    &:hover{
-        background-color: $shadow;
-    }
-    &-person{
-        width: 160px;
-        overflow: hidden;
-    }
-    
-    
 }

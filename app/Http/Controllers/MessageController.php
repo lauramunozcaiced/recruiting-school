@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Message;
-use App\Http\Requests\StoreMessageRequest;
-use App\Http\Requests\UpdateMessageRequest;
+Use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\StoreMessage;
+use App\Http\Requests\UpdateMessage;
 
 class MessageController extends Controller
 {
@@ -15,8 +18,42 @@ class MessageController extends Controller
      */
     public function index()
     {
-        return view('messages.index');
+        $mode = str_replace("/messages?","",$_SERVER["REQUEST_URI"]);
+        $users; $messages;
+        switch(Auth::user()->role){
+            case 'customer':
+            case 'applicant':
+                $users = User::where(function ($query) {
+                    $query->where('role','==','supervisor')
+                    ->orWhere('role','==','recruiter');
+                })->get();
+            break;
+            default:
+            $users = User::all();
+            break;
+        }
+        if($mode == 'inbox'){
+            $messages = Message::where('receiver','=',Auth::user()->id)->with('senderUser','receiverUser')->orderBy('created_at', 'desc')->get();
+        }else{
+            $messages = Message::where('sender','=',Auth::user()->id)->with('senderUser','receiverUser')->orderBy('created_at', 'desc')->get();
+        }
+
+        return view('messages.index', compact('users','messages','mode'))->render();
     }
+
+   
+    public function reload(Request $request){
+        $mode = $request->mode;
+        $messages;
+
+        if($mode == 'inbox'){
+            $messages = Message::where('receiver','=',Auth::user()->id)->with('senderUser','receiverUser')->orderBy('created_at', 'desc')->get();
+        }else{
+            $messages = Message::where('sender','=',Auth::user()->id)->with('senderUser','receiverUser')->orderBy('created_at', 'desc')->get();
+        }
+        return view("components.messages.inbox", compact('messages','mode'))->render();
+    }
+   
 
     /**
      * Show the form for creating a new resource.
@@ -34,9 +71,24 @@ class MessageController extends Controller
      * @param  \App\Http\Requests\StoreMessageRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreMessageRequest $request)
+    public function store(StoreMessage $request)
     {
-        //
+        $mode = $request->mode;
+        $messages;
+        Message::create([
+            'receiver' => $request->receiver,
+            'sender' => $request->sender,
+            'subject' => $request->subject,
+            'message' => $request->message
+        ]);
+
+        if($mode == 'inbox'){
+            $messages = Message::where('receiver','=',Auth::user()->id)->with('senderUser','receiverUser')->orderBy('created_at', 'desc')->get();
+        }else{
+            $messages = Message::where('sender','=',Auth::user()->id)->with('senderUser','receiverUser')->orderBy('created_at', 'desc')->get();
+        }
+        return view("components.messages.inbox", compact('messages','mode'))->render();
+        
     }
 
     /**
@@ -47,7 +99,20 @@ class MessageController extends Controller
      */
     public function show(Message $message)
     {
-        //
+        $users; 
+        switch(Auth::user()->role){
+            case 'customer':
+            case 'applicant':
+                $users = User::where(function ($query) {
+                    $query->where('role','==','supervisor')
+                    ->orWhere('role','==','recruiter');
+                })->get();
+            break;
+            default:
+            $users = User::all();
+            break;
+        }
+        return view('messages.show', compact('message','users'));
     }
 
     /**

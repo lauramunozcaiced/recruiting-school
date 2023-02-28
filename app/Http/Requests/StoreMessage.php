@@ -26,6 +26,7 @@ class StoreMessage extends FormRequest
         return [
             'sender' => ['required', 'integer'],
             'receiver' => ['required', 'integer'],
+            'subject' => ['required'],
             'message' => ['required'],
         ];
     }

@@ -9,7 +9,7 @@ class Message extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+    protected $guarded = ['read'];
 
     public function senderUser(){
         return $this->hasOne('App\Models\User','id','sender');

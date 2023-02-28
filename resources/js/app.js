@@ -1,9 +1,14 @@
 require('./bootstrap');
-
+alertify.set('notifier','position', 'top-right');
 
 jQuery(document).ready(function(){
     x= 0;
     y= 0;
+    let pathInformation = {
+        routeName : jQuery('input[name=routeName]').val(),
+        completeUri : jQuery('input[name=completeUri]').val(),
+        reloadRoute: jQuery('input[name=reloadRoute]').val()
+    }
 
     //Execute function for active first card in carousel:
     activeFirst();
@@ -15,9 +20,70 @@ jQuery(document).ready(function(){
     limitStartDate();
     //Execute function for Initialize End Date:
     initializeEndDate()
+    console.log(pathInformation)
+    if(pathInformation.routeName == 'messages.index'){
+        reloadMessagesAjax();
+    }
+
+    jQuery('.selectize-select').select2();
 
     // launch or use event
     setTimeout(animPie, 500);
+
+
+
+    function reloadMessagesAjax(){
+        const mode = (pathInformation.completeUri.includes("inbox"))? 'inbox': 'sent';
+        jQuery.ajax({
+            method: 'POST',
+            url: pathInformation.reloadRoute,
+            dataType: 'html',
+            data: {
+                mode: mode
+            },
+            success: function(res){
+                jQuery('#dynamic-messages').empty();
+                jQuery('#dynamic-messages').append(res);
+            },
+            error: function (xhr, b, c) {
+                console.log(xhr.responseText,b,c);
+            }
+        })
+        setTimeout(reloadMessagesAjax,20000);
+    }
+
+jQuery('#messagesCreateForm').on('submit', function(e){
+    e.preventDefault()
+    const receiver = jQuery("#messagesCreateForm select[name='receiver']").val();
+    const sender = jQuery("#messagesCreateForm input[name='sender']").val();
+    const subject = jQuery("#messagesCreateForm input[name='subject']").val();
+    const message = jQuery("#messagesCreateForm input[name='message']").val();
+    const _token= jQuery('#messagesCreateForm input[name=_token]').val();
+    const mode = jQuery('#messagesCreateForm input[name=mode]').val();
+    jQuery.ajax({
+        method: 'POST',
+        url: jQuery("#messagesCreateForm").attr("action"),
+        dataType: 'html',
+        data: {
+            _token: _token,
+            sender: sender,
+            receiver: receiver,
+            subject: subject,
+            message: message,
+            mode: mode
+        },
+        success: function(res){
+            jQuery('#exampleModal').modal('toggle');
+            alertify.success('Success message');
+            jQuery('#dynamic-messages').empty();
+            jQuery('#dynamic-messages').append(res);
+        },
+        error: function (xhr, b, c) {
+            console.log(xhr.responseText,b,c);
+        }
+    })
+    })
+
 
     jQuery('.modal').on('hidden.bs.modal',function(){
         

@@ -45,6 +45,7 @@ Route::get('preselections/change', [PreselectionController::class,'change'])->na
 Route::resource('preselections',  PreselectionController::class)->middleware('auth')->middleware('preselections');
 Route::resource('evaluations',  EvaluationController::class)->middleware('auth');
 Route::resource('messages', MessageController::class)->middleware('auth');
-
+Route::post('messages/reload', [MessageController::class,'reload'])->name('messages.reload')->withoutMiddleware([\App\Http\Middleware\VerifyCsrfToken::class]);
+;
 
 Route::get('/linkstorage', function(){Artisan::call('storage:link'); });
