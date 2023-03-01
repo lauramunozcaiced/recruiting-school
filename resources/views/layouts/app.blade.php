@@ -49,9 +49,7 @@
  <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js" defer></script>
 </head>
 <body @auth class="{{Auth::user()->role}}" @endauth>
-    @php
-        date_default_timezone_set("America/Bogota");
-    @endphp
+   
     <input type="hidden" name="routeName" value="{{Route::currentRouteName()}}">
     <input type="hidden" name="completeUri" value="{{$_SERVER["REQUEST_URI"]}}">
     <input type="hidden" name="reloadRoute" value="{{ route('messages.reload') }}">

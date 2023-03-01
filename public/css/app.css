@@ -12151,7 +12151,7 @@ body .app main {
 }
 
 body .app main.max-content {
-  width: calc(100vw - 150px);
+  width: calc(100vw - 160px);
 }
 
 body.dark-mode {
