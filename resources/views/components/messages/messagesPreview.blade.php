@@ -21,7 +21,7 @@
                     {{ date_format($message->created_at,"g:i a") }}
                 @else 
                     @if (date("Y") == date_format($message->created_at,"Y"))
-                        {{ date_format($message->created_at,"F j") }}
+                        {{ date_format($message->created_at,"M j") }}
                     @else
                         {{ date_format($message->created_at,"Y-m-d") }}
                     @endif
